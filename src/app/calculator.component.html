@@ -1,0 +1,25 @@
+<div class="calculator">
+  <h1>Calculator</h1>
+  <div class="input-section">
+    <input type="number" [(ngModel)]="firstNumber" placeholder="First Number">
+    <select [(ngModel)]="operation">
+      <option *ngFor="let op of operations" [value]="op">{{ op }}</option>
+    </select>
+    <input type="number" [(ngModel)]="secondNumber" placeholder="Second Number">
+    <button (click)="calculate()">Calculate</button>
+  </div>
+
+  <div class="result">
+    <h2>Result: {{ result }}</h2>
+  </div>
+
+  <div class="history">
+    <h2>History</h2>
+    <ul>
+      <li *ngFor="let entry of history; let i = index">
+        {{ entry.time }}: {{ entry.firstNumber }} {{ entry.operation }} {{ entry.secondNumber }} = {{ entry.result }}
+        <button (click)="removeHistory(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="form">
+    <h1>Hello {{ name }}!</h1>
+    <div>
+        <label for="name">Enter your name:</label>
+        <input id="name" type="text" (input)="onNameChange($event)" />
+    </div>
+    <div>
+        <label for="font">Choose font:</label>
+        <select id="font" (change)="onFontChange($event)">
+            <option *ngFor="let font of fonts" [value]="font">{{ font }}</option>
+        </select>
+    </div>
+    <div>
+        <label for="size">Choose size:</label>
+        <input id="size" type="number" (input)="onSizeChange($event)" />
+    </div>
+    <div>
+        <label>Alignment:</label>
+        <div class="alignment">
+            <div class="item">
+                <input type="checkbox" id="left" (change)="onCheckboxChange('left')" />
+                <label for="left">Left</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="center" (change)="onCheckboxChange('center')" />
+                <label for="center">Center</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="right" (change)="onCheckboxChange('right')" />
+                <label for="right">Right</label>
+            </div>
+        </div>
+        
+    </div>
+    <div [style.font-family]="font" [style.font-size.px]="size" [style.text-align]="textAlign">
+        {{ name }}
+    </div>
+</div>
